@@ -1,15 +1,22 @@
-import { Router, request, response } from "express";
-import { v4 as uuidV4 } from "uuid";
+import { Router, Request, Response } from "express"
+import { v4 as uuidV4 } from "uuid"
+import { Cnaes } from "../model/Cnaes"
 
-const cnaesRoutes = Router();
+const cnaesRoutes = Router()
 
-const cnaes = [];
+const supercnaes: Cnaes[] = []
 
-cnaesRoutes.post("/", (request, response) => {
-  const { descricao, codigo } = request.body;
-  const economyCodes = { id: uuidV4(), descricao, codigo };
-  cnaes.push(economyCodes);
-  return response.status(201).send();
-});
+cnaesRoutes.post("/", (request: Request, response: Response) => {
+    try {
+        const { Codigo, Descricao } = request.body
+        const novaCnae = new Cnaes()
+        Object.assign(Codigo, Descricao)
+        //teste
+        supercnaes.push(novaCnae)
+        return response.status(201).json(novaCnae)
+    } catch (error) {
+        return response.status(500).json({ error: "Erro interno no servidor" })
+    }
+})
 
-export { cnaesRoutes };
+export { cnaesRoutes }
