@@ -1,9 +1,6 @@
-import { Cnaes } from "../shared/infra/http/model/Cnaes";
+import { Cnaes } from "../shared/model/Cnaes";
+import { ICreateCnaesDTO } from "./ICnaesRepository";
 
-interface ICreateCnaesDTO {
-  Codigo: number;
-  Descricao: string;
-}
 class CnaesRepository {
   private supercnaes: Cnaes[];
 
