@@ -20,6 +20,13 @@ class CnaesRepository {
   list(): Cnaes[] {
     return this.supercnaes;
   }
+
+  findByNumber(Codigo: number): Cnaes {
+    const category = this.supercnaes.find(
+      (category) => category.Codigo === Codigo
+    );
+    return category;
+  }
 }
 
 export { CnaesRepository };
