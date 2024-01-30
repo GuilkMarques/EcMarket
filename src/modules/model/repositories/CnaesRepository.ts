@@ -1,5 +1,5 @@
-import { Cnaes } from "../shared/model/Cnaes";
-import { ICreateCnaesDTO } from "./ICnaesRepository";
+import { Cnaes } from "../Cnaes";
+import { ICreateCnaesDTO } from "./I-CnaesRepository";
 
 class CnaesRepository {
   private supercnaes: Cnaes[];

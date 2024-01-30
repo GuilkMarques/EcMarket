@@ -1,13 +1,13 @@
-import { CnaesRepository } from "../repositories/CnaesRepository";
+import { ICnaesRepository } from "../../repositories/I-CnaesRepository";
 
 interface IRequest {
   Codigo: number;
   Descricao: string;
 }
 
-class CreateCnaesService {
-  constructor(private cnaesRepository: CnaesRepository) {}
-  execute({ Codigo, Descricao }: IRequest) {
+class CreateCnaesUseCase {
+  constructor(private cnaesRepository: ICnaesRepository) {}
+  execute({ Codigo, Descricao }: IRequest): void {
     const cnaesAlreadyExists = this.cnaesRepository.findByNumber(Codigo);
     if (cnaesAlreadyExists) {
       throw new Error("CNAES Already Exists");
@@ -16,4 +16,4 @@ class CreateCnaesService {
   }
 }
 
-export { CreateCnaesService };
+export { CreateCnaesUseCase };

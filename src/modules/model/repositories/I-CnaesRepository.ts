@@ -1,4 +1,4 @@
-import { Cnaes } from "../shared/model/Cnaes";
+import { Cnaes } from "../Cnaes";
 
 interface ICreateCnaesDTO {
   Codigo: number;
