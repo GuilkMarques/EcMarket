@@ -1,11 +1,20 @@
-import { Cnaes } from "../Cnaes";
-import { ICreateCnaesDTO } from "./I-CnaesRepository";
+import { Cnaes } from "../../Cnaes";
+import { ICreateCnaesDTO } from "../I-CnaesRepository";
 
 class CnaesRepository {
   private supercnaes: Cnaes[];
 
-  constructor() {
+  private static INSTANCE: CnaesRepository;
+
+  private constructor() {
     this.supercnaes = [];
+  }
+
+  public static getInstance(): CnaesRepository {
+    if (!CnaesRepository.INSTANCE) {
+      CnaesRepository.INSTANCE = new CnaesRepository();
+    }
+    return CnaesRepository.INSTANCE;
   }
 
   create({ Codigo, Descricao }: ICreateCnaesDTO): void {
