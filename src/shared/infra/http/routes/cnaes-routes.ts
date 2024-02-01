@@ -16,7 +16,7 @@ cnaesRoutes.post("/", (request: Request, response: Response) => {
 cnaesRoutes.get("/", (request: Request, response: Response) => {
   return listCnaesController.handle(request, response)
 })
-cnaesRoutes.post("/import", upload.array("file"), (request: Request, response: Response) => {
+cnaesRoutes.post("/import", upload.single("file"), (request: Request, response: Response) => {
   return importcnaesController.handle(request, response)
 })
 
